@@ -1,4 +1,6 @@
 # OSS
+## 복붙하면 KILL U .. 지구 끝까지 쫓아감
+
 
 Status: In progress
 Created: 2023년 11월 27일 오후 8:30
