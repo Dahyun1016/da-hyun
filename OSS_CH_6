@@ -1,0 +1,98 @@
+# 6-1 원격 저장소 복제 Clone
+
+## 지역에서 깃허브 원격 저장소 복제 clone
+
+clone (클론) : 원격 저장소를 지역 저장소에 복제
+
+공개된 저장소는 소유와 관계없이 누구나 가능
+
+깃허브 원격저장소 생성
+
+저장소 이름 : git-clone
+
+https 주소 복사
+
+pc 깃에서 원격저장소 복제
+
+- $ git clone [복사된-주소] - 원격저장소와 동일한 이름으로 복제
+- $ git clone [복사된-주소] [새로운-폴더명] - 하부 폴더 [새로운-폴더명] 이름으로 복제
+- $ git clone [복사된-주소] - 현재 폴더에 바로 복제
+
+원격 저장소 별칭 이름 점검
+
+- $ git remote - 원격저장소 이름 목록만
+- 기본 이름 origin 점검
+- 위에서 clone 을 했기 때문에 별칭 origin이 위의 주소가 설정
+
+- $ git remote -v : 원격저장소 주소와 이름 목록
+
+원격 저장소 별칭 관리
+
+- $ git remote add origin URL - 원격저장소 별칭 저장
+- $ git remote show origin - 자세한 정보
+- $ git remote rename origin org - 이름 수정
+- $ git remote rm org - 삭제
+- $ git remote show origin(atom) - 원격저장소의 모든 브랜치 보기 가능
+
+유명 오픈 소스 소프트웨어
+
+- 편집기 vscode
+- 편집기 atom
+- VCS 깃
+- 구글 인공지능라이브러리
+
+---
+
+# 6-2 지역과 원격 저장소 연동 push pull
+
+## 개인 접근 토근 ( personal access token) 생성
+
+## 깃허브 원격 저장소 수정 후 pull
+
+push , pull 깃허브에선 올리기 내리기
+
+깃허브 원격 저장소에서 수정 후 커밋
+
+- 원격 저장소의 수정을 지역 저장소에 반영 —> 지역 저장소에서 pull
+- 참조 오류 발생 가능
+- 인증 오류 발생 가능
+
+인증 오류 해결 방법
+
+PAT (Personal access token)로 연결
+
+지역 저장소에서 Push
+
+- 쓰기 권한이 있어야 push 가능 - 자신의 저장소나 다른 사람의 저장소라면 협업자로 등록
+- Push - 로컬 저장소에서 남겨놓은 코드 변경 이력들이 원격 저장소로 전송
+- $ git push <저장소 별칭명> <브랜치명> : $ git push origin topic
+
+명령 Push 에서 인자 생략하기
+
+- 옵션 -u 사용
+- 최초에 한 번만 저장소명과 브랜치명을 입력하고 그 이후에는 모든 인자 생략
+- $ git push 성공 이후 간단히 가능
+
+원격 저장소 수정 사항 fetch로 지역 저장소로 가져와 병합하기
+
+- fetch 원격 저장소에서 로컬 저장소로 소스를 가져와 병합을 미수행하는 명령
+- $ git fetch <remote> , $ git fetch origin main , $ git merge origin/main
+
+지역 저장소 수정 사항 push로 원격저장소 보내기
+
+- $ git push origin main
+- $ git push
+
+---
+
+# 6-3 지역과 원격 저장소 브랜치 연동
+
+## clone과 push , pull , fetch
+
+git clone - 원격 저장소를 지역 저장소에 복제
+
+git pull - 원격 저장소 > 지역 저장소
+
+git push - 지역 저장소 > 원격 저장소
+
+git fetch - 원격 저장소 지역 저장소로 가져와 병합 미수행
