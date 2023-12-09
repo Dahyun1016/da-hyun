@@ -1,0 +1,116 @@
+import csv
+import matplotlib.pyplot as plt
+
+f = open('gender.csv', encoding='cp949')
+data = csv.reader(f)
+
+header = next(data)
+
+male = []
+female = []
+
+name = input('찾고 싶은 지역의 이름을 알려주세요: ') 
+# 제주특별자치도
+
+for row in data :
+    if name in row[0] :
+        for i in row[3:104] :
+            i = i.replace(',', '')
+            male.append(-int(i))
+        for i in row[106:] :
+            i = i.replace(',', '') # replace() 함수 -> 특정 문자 제거
+            female.append(int(i))
+
+f.close()
+plt.rc('font', family = 'Malgun Gothic')
+plt.rc('axes', unicode_minus = False)
+
+plt.style.use('ggplot')
+# plt.figure(figsize=(5, 10))
+
+plt.title(name + ' 지역의 남녀 성별 인구 분포')
+
+plt.barh(range(len(male)), male, color='b', label='male')
+plt.barh(range(len(female)), female, color='r', label='female')
+plt.xlabel('Population')
+plt.ylabel('Age')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+replace () 함수 활용시 특정문자 제거 가능 
+
+replace(’특정문자’ , “”) → 특정 문자를 제거
+
+---
+
+파일 형식은 **PNG Image**가 기본
+**PNG(Portable Network Graphics)**는 비손실 그래픽 파일 포맷의 하나
+
+import matplotlib.pyplot as plt
+
+x = [0, 2, 4, 5]
+y = [5, 10, 15, 20]
+
+plt.bar(x, y)
+plt.savefig('막대그래프_기본.png')
+plt.savefig('막대그래프_DPI_50.png', dpi=50)
+plt.savefig('막대그래프_DPI_200.png', dpi=200)
+plt.show()
+
+**DPI(Dots per inch)**는 디스플레이 해상도의 측정 단위이며,
+1 제곱 인치 공간 안에 배치되는 픽셀(Pixel)의 수를 의미
+
+→ DPI 값을 크게 지정하면 이미지가 선명해지는 대신 , 이미지 파일 크기가 커짐
+
+```python
+import matplotlib.pyplot as plt
+
+x = [0, 2, 4, 5]
+y = [5, 10, 15, 20]
+
+plt.bar(x, y)
+plt.savefig('막대그래프_facecolor.png', facecolor='skyblue')
+plt.show()
+```
+
+savefig : 함숫값으로 저장할 이미지 파일 명 작성
+
+facecolor : 배경색 지정
+
+
+# CSV 파일을 읽기 위해 csv 모듈을 import합니다.
+import csv
+
+# 'subwayfee.csv' 파일을 'cp949' 인코딩으로 엽니다.
+f = open('subwayfee.csv', encoding='cp949')
+
+# CSV 파일의 내용을 읽기 위해 csv.reader를 사용합니다.
+data = csv.reader(f)
+
+# 첫 번째 행을 건너뛰고 실제 데이터를 읽습니다.
+next(data)
+
+# 각각의 방법으로 초기화된 리스트를 생성합니다.
+
+# 1. 빈 문자열로 초기화된 1차원 리스트를 생성합니다.
+max_station = ['', '', '', '']
+print(max_station)
+
+# 2. 빈 문자열로 초기화된 1차원 리스트를 생성하는 다른 방법입니다.
+max_station = [''] * 4
+print(max_station)
+
+# 3. 빈 문자열로 초기화된 1차원 리스트를 생성하는 또 다른 방법입니다.
+max_station = []
+for i in range(4):
+    max_station.append('')
+print(max_station)
+
+# 4. 리스트 컴프리헨션을 사용하여 빈 문자열로 초기화된 1차원 리스트를 생성합니다.
+max_station = ['' for _ in range(4)]
+print(max_station)
+
+# 파일을 닫습니다.
+f.close()
+
